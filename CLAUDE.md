@@ -22,7 +22,7 @@ project_name/
 ├── README.md
 ├── CLAUDE.md  # This file
 ├── pyproject.toml
-├── config.json
+├── config.yaml
 ├── .pre-commit-config.yaml
 ├── .gitignore
 ├── main.py
@@ -109,18 +109,16 @@ services:
 ## Configuration Management
 
 ### config.json (Non-secret settings)
-```json
-{
-  "debug": true,
-  "log_level": "DEBUG",
-  "app_name": "project_name",
-  "version": "0.1.0",
-}
+```yaml
+debug: true
+log_level: DEBUG
+app_name: project_name
+version: 0.1.0
 ```
 
 ### Settings Pattern
 ```python
-import json
+import yaml
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
@@ -135,10 +133,10 @@ class Settings(BaseSettings):
     database_url: str
     
     def __init__(self):
-        # Load config.json
+        # Load config.yaml
         try:
-            with open('config.json') as f:
-                config = json.load(f)
+            with open('config.yaml') as f:
+                config = yaml.safe_load(f)
         except FileNotFoundError:
             config = {}
         

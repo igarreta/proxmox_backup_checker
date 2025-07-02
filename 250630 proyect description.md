@@ -20,10 +20,20 @@ These checks will be performed:
 1. Check if rclone is installed and configured.
 2. For each directory in the list, copy all files less than the specified number of days old to the specified rclone directory using rclone. If days == 0 or not defined, copy all files. Include files in subdirectories. First check that the total size of the files to copy is less than the specified maximum size. 
 3. Keep the number of backups indicated in retention_days, retention_weeks and retention_months. No retention if not defined.
-4. Make directories for daily, weekly and monthly backups. Within each, make a directory for each backup. The directory name will be the timestamp of the backup. This is intended to be run daily. A second backup on the same day will be copied to the same directory.
+4. Make directories for daily, weekly and monthly backups. Within each, make a directory for each backup. The directory name will be the timestamp of the backup (format YYYY-MM-DD). This is intended to be run daily. A second backup on the same day will be copied to the same directory.
+5. Daily: keep the last indicated days 
+6. Weekly: keep the last indicated weeks, update on Mondays. Promote from daily to weekly.
+7. Monthly: keep the last indicated months, update on the first day of the month. Promote from daily to monthly.
+
 
 ## cron job
+The cron job will be run daily at 5:00 AM by the server main cron.
 Give a cron example for the job.
+
+## rclone
+As this will run inside a docker container, rclone must be installed inside the container, and an adecuate persistent volume must be mounted to store the rclone configuration inside the container.
+Provide instructions to authorize rclone. The server does not have a web browser. 
+
 
 ## Configuration
 The configuration file (`config.yaml`) will be a YAML file with the following structure:
@@ -68,7 +78,10 @@ Include total size for each backup and copy name and latest file date.
 
 ## Error handling
 If an directory is not mounted, include it in the summary and continue.
+If any of the backup_copy_list is not possible to copy, include it in the summary and continue.
 
+## Metrics
+Do not save metrics.
 
 ## Alert Process
 If errors are detected, alerts will be sent through multiple channels :
