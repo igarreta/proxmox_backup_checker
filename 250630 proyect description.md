@@ -1,7 +1,7 @@
 # Proxmox Backup Checker
 This project will check backups repositories and will check if the backups are reliable.
-Will also make copies of some directories to a remote storage.
-It will be written in Python 3.13 and will be run as a daily cron job inside a docker container.
+It will be written in Python 3.13 and will be run as a daily cron job.
+As this will be run by cron and do not have interaction with the user, it will not be run inside a docker container.
 
 ## General instructions
 Use general and project CLAUDE.md files for general instructions. 
@@ -12,18 +12,9 @@ Backup repositories may be mounted as read only. They may be external USB disk t
 ## Check process (backup_check_list)
 These checks will be performed:
 1. Check if the directories listed in check_dir_list are mounted and accessible. If not, send an alert and stop.
-2. Check if the backup disk has at least 200 GB of free space. If not, send an alert.
+2. Check if the directories listed in check_dir_list have at least 200 GB of free space. If not, send an alert.
 3. For each directory in the list, check if a new backup has been created in the last number of days as specified in the configuration file. This backup must be at least the minimum size specified in the configuration file (adding all the files created in the specified number of days, including subdirectories). If not, send an alert.
-
-
-## Backup copy process (backup_copy_list)
-1. Check if rclone is installed and configured.
-2. For each directory in the list, copy all files less than the specified number of days old to the specified rclone directory using rclone. If days == 0 or not defined, copy all files. Include files in subdirectories. First check that the total size of the files to copy is less than the specified maximum size. 
-3. Keep the number of backups indicated in retention_days, retention_weeks and retention_months. No retention if not defined.
-4. Make directories for daily, weekly and monthly backups. Within each, make a directory for each backup. The directory name will be the timestamp of the backup (format YYYY-MM-DD). This is intended to be run daily. A second backup on the same day will be copied to the same directory.
-5. Daily: keep the last indicated days 
-6. Weekly: keep the last indicated weeks, update on Mondays. Promote from daily to weekly.
-7. Monthly: keep the last indicated months, update on the first day of the month. Promote from daily to monthly.
+4. Calculate the total size of the backup directory for each backup in the list. Include only the files that are less than the max_time_window hours older than the latest file in the backup directory.
 
 
 ## cron job
@@ -31,8 +22,7 @@ The cron job will be run daily at 5:00 AM by the server main cron.
 Give a cron example for the job.
 
 ## rclone
-As this will run inside a docker container, rclone must be installed inside the container, and an adecuate persistent volume must be mounted to store the rclone configuration inside the container.
-Provide instructions to authorize rclone. The server does not have a web browser. 
+rclone should be already installed and authorized in the server. Include this as a prerrequisite.
 
 
 ## Configuration
@@ -45,6 +35,7 @@ log_file: log/proxmox_backup_checker.log # path to log file relative to project 
 check_dir_list: # list of directories to check availability
   - /mnt/backup_usb1/ 
   - /mnt/hassio
+max_time_window: 3 # inclued all files that are less than this number of hours older than the latest file in the backup directory to calculate the total size
 backup_check_list: # list of backups to check
   - name: homeassistant # short name/identifier for the backup (required)
     backup_dir: /mnt/backup_usb1/homeassistant # path to the backup directory (required)
@@ -54,15 +45,6 @@ backup_check_list: # list of backups to check
     backup_dir: /mnt/backup_usb1/vms
     days: 7
     min_size_gb: 10.0
-backup_copy_list: # list of directories to copy to remote storage
-  - name: homeassistant_copy # short name/identifier for the backup (required)
-    source_dir: /mnt/hassio # path to the source directory (required)
-    rclone_path: onedrive:/GR_SRV03/backup/homeassistant # path to the rclone directory (required)
-    max_size_mb: 200 # maximum size in MB for the backup (optional)
-    days: 1 # maximum age in days of the files to be copied (optional)
-    retention_days: 7 # number of days to keep the backup (optional)
-    retention_weeks: 4 # number of weeks to keep the backup (optional)
-    retention_months: 12 # number of months to keep the backup (optional)
 
 ```
 
@@ -74,11 +56,10 @@ The configuration file will be validated against a schema. If the configuration 
 
 ## Notification
 Send email when process is completed with a summary of the results.
-Include total size for each backup and copy name and latest file date.
+Include total size for each backup checked.
 
 ## Error handling
 If an directory is not mounted, include it in the summary and continue.
-If any of the backup_copy_list is not possible to copy, include it in the summary and continue.
 
 ## Metrics
 Do not save metrics.
