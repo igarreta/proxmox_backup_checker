@@ -1,0 +1,6 @@
+[submodule "mylogger"]
+	path = mylogger
+	url = https://github.com/igarreta/mylogger.git
+[submodule "pushover"]
+	path = pushover
+	url = https://github.com/igarreta/pushover.git
