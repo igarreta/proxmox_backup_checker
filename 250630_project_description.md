@@ -11,47 +11,44 @@ Backup repositories may be mounted as read only. They may be external USB disk t
 
 ## Check process (backup_check_list)
 These checks will be performed:
-1. Check if the directories listed in check_dir_list are mounted and accessible. If not, send an alert and stop.
-2. Check if the directories listed in check_dir_list have at least min_free_space_gb of free space. If not, send an alert.
-3. For each directory in the list, check if a new backup has been created in the last number of days as specified in the configuration file. This backup must be at least the minimum size specified in the configuration file (adding the size of all the files created in the specified number of days, including subdirectories). If not, send an alert.
-4. Calculate the total size of the backup directory for each backup in the list. Include only the files that are less than the 'days' specified in the configuration file old.
-5. Do not look into subdirectories of the backup directory. 
-
+1. Check if the backup directories (backup_dir) from backup_check_list are mounted and accessible. If not, send an alert and stop.
+2. Check if the backup directories (backup_dir) from backup_check_list have at least min_free_space_gb of free space. If not, send an alert.
+3. For each backup in backup_check_list, check if files have been modified in the last number of days as specified in the configuration file. Calculate the total size by adding all files in the backup directory (not subdirectories) that have been modified within the specified number of days based on their last modified date. If the total size is less than the minimum size specified in the configuration file, send an alert.
+4. Calculate the total size of all files in each backup directory for reporting purposes (files modified within the 'days' period only).
+5. File searches are limited to the backup directory itself - do not look into subdirectories. 
 
 ## cron job
 The cron job will be run daily at 6:00 AM by the server main cron.
-Give a cron example for the job.
 
-## rclone
-rclone should be already installed and authorized in the server. Include this as a prerrequisite.
+Example cron entry:
+```bash
+# Daily backup check at 6:00 AM
+0 6 * * * cd /home/rsi/proxmox_backup_checker && uv run python main.py
+```
 
 
 ## Configuration
 The configuration file (`var/config.yaml`) will be a YAML file with the following structure:
 ```yaml
-from_email: # email to send notifications from
-  sender@example.com
+from_email: sender@example.com # email to send notifications from
 to_email: # list of emails to send notifications to 
   - user@example.com
 log_level: INFO # logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 log_file: log/proxmox_backup_checker.log # path to log file relative to project root
-check_dir_list: # list of directories to check availability
-  - /mnt/backup_usb1/ 
-  - /mnt/hassio
 min_free_space_gb: 200 # minimum free space in GB for the backup directory
 backup_check_list: # list of backups to check
   - name: proxmox # short name/identifier for the backup (required)
     backup_dir: /mnt/backup_usb1/vm-containers/dump # path to the backup directory (required)
     days: 8 # maximum age in days for the backup (required)
-    min_size_kb: 1000000 # minimum expected backup size in KB (optional)
+    min_size: 10 GB # minimum expected backup size in GB (optional)
   - name: homeassistant # short name/identifier for the backup (required)
     backup_dir: /mnt/backup_usb1/homeassistant # path to the backup directory (required)
     days: 1 # maximum age in days for the backup (required)
-    min_size_kb: 30720 # minimum expected backup size in KB (optional)
+    min_size: 30 GB # minimum expected backup size in GB (optional)
   - name: proxmox-config
     backup_dir: /mnt/backup_usb1/proxmox-config/daily
     days: 1
-    min_size_kb: 10
+    min_size: 10 KB
 
 ```
 
@@ -70,7 +67,7 @@ Send email when process is completed with a summary of the results, including:
 - Total time taken
 
 ## Error handling
-If a backup_check_list directory is not mounted, include it in the summary and continue.
+If a backup directory is not mounted, include it in the summary and continue.
 Do not retry in any case.
 
 ## Metrics
@@ -87,6 +84,8 @@ Each alert will include:
 - Affected backup  name
 - Detailed error message
 - Relevant metrics (backup size, age, etc.)
+
+Send only one alert per session, with all the errors detected.
 
 ## Logging
 Logging follows predefined logging instructions (CLAUDE.md)
