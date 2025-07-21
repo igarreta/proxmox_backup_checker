@@ -7,15 +7,14 @@ As this will be run by cron and do not have interaction with the user, it will n
 Use general and project CLAUDE.md files for general instructions. 
 
 ## Backup location
-Backup repositories may be mounted as read only. They may be external USB disk that could disconnect, and mounted on this server by a samba share.
+Backup repositories may be mounted as read only. They may be external USB disk that could disconnect.
 
 ## Check process (backup_check_list)
 These checks will be performed:
-1. Check if the backup directories (backup_dir) from backup_check_list are mounted and accessible. If not, send an alert and stop.
-2. Check if the backup directories (backup_dir) from backup_check_list have at least min_free_space_gb of free space. If not, send an alert.
-3. For each backup in backup_check_list, check if files have been modified in the last number of days as specified in the configuration file. Calculate the total size by adding all files in the backup directory (not subdirectories) that have been modified within the specified number of days based on their last modified date. If the total size is less than the minimum size specified in the configuration file, send an alert.
-4. Calculate the total size of all files in each backup directory for reporting purposes (files modified within the 'days' period only).
-5. File searches are limited to the backup directory itself - do not look into subdirectories. 
+1. Check if the backup directories (backup_dir) from backup_check_list are mounted and accessible. If not, send an alert and do not check the unaccessible locations.
+2. Check if the each of the backup directories (backup_dir) from backup_check_list have at least min_free_space_gb of free space. If not, send an alert.
+3. For each backup in backup_check_list, check the total size of the files that have been modified in the last number of days as specified in backup_check_list. Calculate the total size by adding all files in the backup directory (not subdirectories) that have been modified within the specified number of days based on their last modified date. If the total size is less than the minimum size specified in backup_check_list, or if non have been modified, send an alert indicating the backup name and the total size.
+4. File searches are limited to the backup directory itself - do not look into subdirectories. 
 
 ## cron job
 The cron job will be run daily at 6:00 AM by the server main cron.
@@ -28,23 +27,24 @@ Example cron entry:
 
 
 ## Configuration
-The configuration file (`var/config.yaml`) will be a YAML file with the following structure:
+The configuration file (`var/config.yaml`) will be a YAML file with the following structure.
+It will be used for non secret settings. All secrets are stored in ~/etc/.
 ```yaml
-from_email: sender@example.com # email to send notifications from
-to_email: # list of emails to send notifications to 
+from_email: sender@example.com # email to send notifications from (optional, default from ~/var/sendgrid.env)
+to_email: # list of emails to send notifications to (optional, default from ~/var/sendgrid.env)
   - user@example.com
 log_level: INFO # logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-log_file: log/proxmox_backup_checker.log # path to log file relative to project root
-min_free_space_gb: 200 # minimum free space in GB for the backup directory
+log_file: log/proxmox_backup_checker.log # path to log file relative to project root (optional, default log/proxmox_backup_checker.log)
+min_free_space: 100 GB# minimum free space in GB for the backup directory (optional, default 100 GB)
 backup_check_list: # list of backups to check
   - name: proxmox # short name/identifier for the backup (required)
     backup_dir: /mnt/backup_usb1/vm-containers/dump # path to the backup directory (required)
     days: 8 # maximum age in days for the backup (required)
-    min_size: 10 GB # minimum expected backup size in GB (optional)
+    min_size: 10 GB # minimum expected backup size in GB (optional, default 1 KB)
   - name: homeassistant # short name/identifier for the backup (required)
     backup_dir: /mnt/backup_usb1/homeassistant # path to the backup directory (required)
     days: 1 # maximum age in days for the backup (required)
-    min_size: 30 GB # minimum expected backup size in GB (optional)
+    min_size: 30 GB # minimum expected backup size in GB (optional, default 1 KB)
   - name: proxmox-config
     backup_dir: /mnt/backup_usb1/proxmox-config/daily
     days: 1
@@ -75,8 +75,8 @@ Do not save metrics.
 
 ## Alert Process
 If errors are detected, alerts will be sent through multiple channels :
-1. Email (using SendGrid): all alerts
-2. Pushover notifications (low priority): only critical alerts
+1. Email (using SendGrid): all alerts and notifications
+2. Pushover notifications (low priority): only critical alerts, indicating unreachable backup directories or backups with less than min_size.
 
 Each alert will include:
 - Timestamp
@@ -85,7 +85,7 @@ Each alert will include:
 - Detailed error message
 - Relevant metrics (backup size, age, etc.)
 
-Send only one alert per session, with all the errors detected.
+Send only one alert per session, including all the errors detected.
 
 ## Logging
 Logging follows predefined logging instructions (CLAUDE.md)
@@ -93,8 +93,4 @@ Logging follows predefined logging instructions (CLAUDE.md)
 ## Documentation
 Provide a README.md file with instructions on how to install and run the project. 
 Include example configuration file.
-
-
-
-
 
