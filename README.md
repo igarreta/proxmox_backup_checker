@@ -309,13 +309,17 @@ python -c "from python_utils import PushoverNotifier; p=PushoverNotifier(); prin
 ```
 proxmox_backup_checker/
 ├── README.md                 # This file
-├── main.py                  # Main application (to be implemented)
+├── main.py                  # Main application entry point
 ├── requirements.txt         # Python dependencies
+├── src/                     # Application source code
+│   ├── __init__.py         # Package initialization
+│   ├── backup_checker.py   # Core backup validation logic
+│   └── notification_manager.py # Email and Pushover coordination
 ├── var/
 │   ├── config.yaml         # Main configuration
 │   └── example_config.yaml # Example configuration
 ├── log/                    # Log files (auto-created)
-├── python_utils/           # Utility library
+├── python_utils/           # Utility library (git submodule)
 │   ├── size_utils.py      # Size parsing and formatting
 │   ├── email_utils.py     # SMTP email notifications
 │   ├── filesystem_utils.py # File and disk operations
