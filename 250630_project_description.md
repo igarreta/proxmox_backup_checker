@@ -13,7 +13,7 @@ Backup repositories may be mounted as read only. They may be external USB disk t
 These checks will be performed:
 1. Check if the backup directories (backup_dir) from backup_check_list are mounted and accessible. If not, send an alert and do not check the unaccessible locations.
 2. Check if the each of the backup directories (backup_dir) from backup_check_list have at least min_free_space_gb of free space. If not, send an alert.
-3. For each backup in backup_check_list, check the total size of the files that have been modified in the last number of days as specified in backup_check_list. Calculate the total size by adding all files in the backup directory (not subdirectories) that have been modified within the specified number of days based on their last modified date. If the total size is less than the minimum size specified in backup_check_list, or if non have been modified, send an alert indicating the backup name and the total size.
+3. For each backup in backup_check_list, check the total size of the files that have been modified in the last number of days as specified in backup_check_list using filesystem information. Calculate the total size by adding all files in the backup directory (not subdirectories) that have been modified within the specified number of days based on their last modified date. If the total size is less than the minimum size specified in backup_check_list, or if non have been modified, send an alert indicating the backup name and the total size.
 4. File searches are limited to the backup directory itself - do not look into subdirectories. 
 
 ## cron job
@@ -30,9 +30,9 @@ Example cron entry:
 The configuration file (`var/config.yaml`) will be a YAML file with the following structure.
 It will be used for non secret settings. All secrets are stored in ~/etc/.
 ```yaml
-from_email: sender@example.com # email to send notifications from (optional, default from ~/var/sendgrid.env)
 to_email: # list of emails to send notifications to (optional, default from ~/var/sendgrid.env)
   - user@example.com
+pushover_priority: -1 # pushover priority for notifications (optional, default -1, range -2 to 2)
 log_level: INFO # logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 log_file: log/proxmox_backup_checker.log # path to log file relative to project root (optional, default log/proxmox_backup_checker.log)
 min_free_space: 100 GB# minimum free space in GB for the backup directory (optional, default 100 GB)
@@ -56,7 +56,11 @@ backup_check_list: # list of backups to check
 The configuration file will be located at `var/config.yaml` relative to project root.
 
 ### Configuration integrity
-The configuration file will be validated against a schema. If the configuration is not valid, the program will exit with an critical error.
+The configuration file will be validated against a schema. If the configuration is not valid, the program will exit with an critical error. Using pydantic for validation.
+
+### Units
+min_free_space, min_size can be specified in KB, MB, GB or TB. 
+Size unit parser: "10 GB" → 10737418240 bytes
 
 ## Notification
 Send email when process is completed with a summary of the results, including:
