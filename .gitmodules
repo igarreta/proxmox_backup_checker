@@ -4,3 +4,6 @@
 [submodule "pushover"]
 	path = pushover
 	url = https://github.com/igarreta/pushover.git
+[submodule "python_utils"]
+	path = python_utils
+	url = https://github.com/igarreta/python_utils.git
