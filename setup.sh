@@ -31,10 +31,10 @@ fi
 # Copy example environment files
 echo "🔐 Setting up example credential files..."
 
-if [ ! -f "~/etc/grsrv03.env" ]; then
-    cp examples/grsrv03.env.example ~/etc/grsrv03.env.example
-    echo "✏️  Example SMTP config created at ~/etc/grsrv03.env.example"
-    echo "    Copy to ~/etc/grsrv03.env and configure with your SMTP settings"
+if [ ! -f "~/etc/smtp.env" ]; then
+    cp examples/grsrv03.env.example ~/etc/smtp.env.example
+    echo "✏️  Example SMTP config created at ~/etc/smtp.env.example"
+    echo "    Copy to ~/etc/smtp.env and configure with your SMTP settings"
 fi
 
 if [ ! -f "~/etc/pushover.env" ]; then
@@ -74,7 +74,7 @@ echo "🎉 Setup complete!"
 echo ""
 echo "Next steps:"
 echo "1. Edit var/config.yaml with your backup directories"
-echo "2. Configure SMTP credentials in ~/etc/grsrv03.env"
+echo "2. Configure SMTP credentials in ~/etc/smtp.env"
 echo "3. (Optional) Configure Pushover credentials in ~/etc/pushover.env"
 echo "4. Test run: source .venv/bin/activate && python main.py"
 echo "5. Add to cron: 0 6 * * * cd $(pwd) && $(pwd)/.venv/bin/python main.py"

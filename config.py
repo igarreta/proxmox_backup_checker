@@ -3,12 +3,12 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-def load_environment(env_path="~/etc/grsrv03.env"):
+def load_environment(env_path="~/etc/smtp.env"):
     """
     Load environment variables from the specified file.
     
     Args:
-        env_path (str): Path to the .env file. Defaults to ~/etc/grsrv03.env
+        env_path (str): Path to the .env file. Defaults to ~/etc/smtp.env
         
     Returns:
         bool: True if the file was loaded successfully, False otherwise

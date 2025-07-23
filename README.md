@@ -70,7 +70,7 @@ A comprehensive Python-based backup monitoring system designed to validate backu
 Create your backup configuration file:
 
 ```yaml
-# Email settings (optional, overrides ~/etc/grsrv03.env defaults)
+# Email settings (optional, overrides ~/etc/smtp.env defaults)
 to_email:
   - admin@example.com
   - backup-admin@example.com
@@ -103,7 +103,7 @@ backup_check_list:
     min_size: 10 KB
 ```
 
-### 2. SMTP Configuration (`~/etc/grsrv03.env`)
+### 2. SMTP Configuration (`~/etc/smtp.env`)
 
 Configure email notifications:
 
@@ -259,7 +259,7 @@ cp var/example_config.yaml var/config.yaml
 ```bash
 # Create SMTP configuration
 mkdir -p ~/etc
-cat > ~/etc/grsrv03.env << EOF
+cat > ~/etc/smtp.env << EOF
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 FROM_EMAIL=your-email@gmail.com
