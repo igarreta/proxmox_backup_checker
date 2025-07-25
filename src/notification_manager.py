@@ -65,16 +65,13 @@ class NotificationManager:
         successful_backups = [r for r in check_results if r.get('success', False)]
         failed_backups = [r for r in check_results if not r.get('success', False)]
         
-        # Extract critical failures (unreachable directories, undersized backups)
+        # Extract critical failures (treat ALL backup failures as critical)
         critical_failures = []
         for result in failed_backups:
-            errors = result.get('errors', [])
-            for error in errors:
-                if any(keyword in error.lower() for keyword in ['not accessible', 'not mounted', 'below minimum']):
-                    critical_failures.append({
-                        'backup_name': result['name'],
-                        'error': error
-                    })
+            critical_failures.append({
+                'backup_name': result['name'],
+                'error': result.get('error', 'Unknown error')
+            })
         
         self.logger.info(f"Notification summary:")
         self.logger.info(f"  - Total backups: {len(check_results)}")
@@ -175,11 +172,11 @@ class NotificationManager:
             # Add summary
             message += f"\n\nSummary: {failed_count}/{total_count} backups failed ({duration:.1f}s)"
             
-            # Send with high priority for critical issues
+            # Send with normal priority for critical issues
             success = self.pushover_notifier.send(
                 message=message,
                 title=title,
-                priority=1  # High priority for critical failures
+                priority=0  # Normal priority for critical failures
             )
             
             return success
