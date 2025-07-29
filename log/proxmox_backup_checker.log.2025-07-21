@@ -1,0 +1,1272 @@
+2025-07-21 16:25:14,408 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:25:14,409 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:25:14,409 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:25:14,409 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:25:14,409 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:14,409 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:25:14,409 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:14,410 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:25:14,420 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:25:14,421 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 16:25:14,421 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 16:25:14,421 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:25:14,421 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 16:25:14,421 [BACKUP] INFO       - Log level: INFO
+2025-07-21 16:25:14,421 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:25:14,423 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:25:14,423 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:25:14,423 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 16:25:14,423 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 16:25:14,423 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 16:25:14,423 [BACKUP] INFO       Max age: 8 days
+2025-07-21 16:25:14,423 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 16:25:14,429 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:14,448 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:14,459 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,459 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,460 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:14,460 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 16:25:14,460 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 16:25:14,460 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:25:14,460 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 16:25:14,472 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:14,482 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:14,490 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,491 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,491 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:14,491 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 16:25:14,491 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 16:25:14,492 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:25:14,492 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 16:25:14,497 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:14,509 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:14,516 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,516 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,516 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:14,516 [BACKUP] INFO     Backup validation completed: 0 passed, 3 failed
+2025-07-21 16:25:14,516 [BACKUP] INFO     Backup checks completed in 0.11 seconds
+2025-07-21 16:25:14,517 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:25:14,517 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:25:14,517 [BACKUP] INFO     Notification summary:
+2025-07-21 16:25:14,517 [BACKUP] INFO       - Total backups: 3
+2025-07-21 16:25:14,517 [BACKUP] INFO       - Successful: 0
+2025-07-21 16:25:14,517 [BACKUP] INFO       - Failed: 3
+2025-07-21 16:25:14,518 [BACKUP] INFO       - Critical failures: 0
+2025-07-21 16:25:14,518 [BACKUP] ERROR    Error sending email summary: 'AppConfig' object has no attribute 'get'
+2025-07-21 16:25:14,518 [BACKUP] ERROR    ✗ Failed to send email summary
+2025-07-21 16:25:14,518 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:14,518 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:25:14,518 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:14,519 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 16:25:14,519 [BACKUP] INFO     Successful: 0
+2025-07-21 16:25:14,519 [BACKUP] INFO     Failed: 3
+2025-07-21 16:25:14,519 [BACKUP] INFO     Duration: 0.11 seconds
+2025-07-21 16:25:14,519 [BACKUP] INFO     Notifications sent: ✗
+2025-07-21 16:25:14,519 [BACKUP] WARNING  3 backup(s) failed validation
+2025-07-21 16:25:14,520 [BACKUP] WARNING    - proxmox: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,520 [BACKUP] WARNING    - homeassistant: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,520 [BACKUP] WARNING    - proxmox-config: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:14,520 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:14,520 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:25:14,520 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,439 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:25:21,440 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:25:21,440 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:25:21,440 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:25:21,440 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,440 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:25:21,440 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,440 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:25:21,452 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:25:21,452 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 16:25:21,452 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 16:25:21,452 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:25:21,452 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 16:25:21,453 [BACKUP] INFO       - Log level: INFO
+2025-07-21 16:25:21,453 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:25:21,454 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:25:21,455 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:25:21,455 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 16:25:21,455 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 16:25:21,455 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 16:25:21,455 [BACKUP] INFO       Max age: 8 days
+2025-07-21 16:25:21,455 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 16:25:21,462 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:21,474 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:21,484 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,484 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,484 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:21,485 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 16:25:21,486 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 16:25:21,486 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:25:21,486 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 16:25:21,491 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:21,501 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:21,511 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,512 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,512 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:21,512 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 16:25:21,512 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 16:25:21,512 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:25:21,512 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 16:25:21,519 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:25:21,539 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:25:21,548 [BACKUP] ERROR    Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,548 [BACKUP] ERROR      ✗ Backup freshness check failed: Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,548 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:25:21,548 [BACKUP] INFO     Backup validation completed: 0 passed, 3 failed
+2025-07-21 16:25:21,548 [BACKUP] INFO     Backup checks completed in 0.11 seconds
+2025-07-21 16:25:21,548 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:25:21,548 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:25:21,548 [BACKUP] INFO     Notification summary:
+2025-07-21 16:25:21,548 [BACKUP] INFO       - Total backups: 3
+2025-07-21 16:25:21,548 [BACKUP] INFO       - Successful: 0
+2025-07-21 16:25:21,548 [BACKUP] INFO       - Failed: 3
+2025-07-21 16:25:21,548 [BACKUP] INFO       - Critical failures: 0
+2025-07-21 16:25:21,548 [BACKUP] ERROR    Error sending email summary: 'AppConfig' object has no attribute 'get'
+2025-07-21 16:25:21,549 [BACKUP] ERROR    ✗ Failed to send email summary
+2025-07-21 16:25:21,549 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,549 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:25:21,549 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,549 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 16:25:21,549 [BACKUP] INFO     Successful: 0
+2025-07-21 16:25:21,549 [BACKUP] INFO     Failed: 3
+2025-07-21 16:25:21,549 [BACKUP] INFO     Duration: 0.11 seconds
+2025-07-21 16:25:21,549 [BACKUP] INFO     Notifications sent: ✗
+2025-07-21 16:25:21,549 [BACKUP] WARNING  3 backup(s) failed validation
+2025-07-21 16:25:21,549 [BACKUP] WARNING    - proxmox: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/vm-containers/dump: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,549 [BACKUP] WARNING    - homeassistant: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/homeassistant: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,549 [BACKUP] WARNING    - proxmox-config: Backup validation failed: Error checking backup freshness for /mnt/backup_usb1/proxmox-config/daily: stat: path should be string, bytes, os.PathLike or integer, not tuple
+2025-07-21 16:25:21,549 [BACKUP] INFO     ================================================================================
+2025-07-21 16:25:21,549 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:25:21,549 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:53,150 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:31:53,150 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:31:53,150 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:31:53,150 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:31:53,151 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:53,151 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:31:53,151 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:53,151 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:31:53,153 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:31:53,154 [BACKUP] INFO       - 1 backup(s) to check
+2025-07-21 16:31:53,154 [BACKUP] INFO       - Email recipients: 1
+2025-07-21 16:31:53,154 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:31:53,154 [BACKUP] INFO       - Min free space: 1 GB
+2025-07-21 16:31:53,154 [BACKUP] INFO       - Log level: DEBUG
+2025-07-21 16:31:53,154 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:31:53,155 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:31:53,155 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:31:53,155 [BACKUP] INFO     Starting validation of 1 backup(s)
+2025-07-21 16:31:53,156 [BACKUP] INFO     [1/1] Validating backup: test-backup
+2025-07-21 16:31:53,156 [BACKUP] INFO       Directory: /tmp
+2025-07-21 16:31:53,156 [BACKUP] INFO       Max age: 30 days
+2025-07-21 16:31:53,156 [BACKUP] INFO       Min size: 1 KB
+2025-07-21 16:31:53,156 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:31:53,157 [BACKUP] INFO       ✓ Sufficient free space: 38.7 GB
+2025-07-21 16:31:53,159 [BACKUP] INFO     Backup validation passed: 84 files, total size 796.3 KB
+2025-07-21 16:31:53,160 [BACKUP] INFO       ✓ Backup validation passed: 84 files, 796.3 KB
+2025-07-21 16:31:53,160 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:31:53,160 [BACKUP] INFO     Backup validation completed: 1 passed, 0 failed
+2025-07-21 16:31:53,160 [BACKUP] INFO     Backup checks completed in 0.01 seconds
+2025-07-21 16:31:53,160 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:31:53,160 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:31:53,160 [BACKUP] INFO     Notification summary:
+2025-07-21 16:31:53,160 [BACKUP] INFO       - Total backups: 1
+2025-07-21 16:31:53,160 [BACKUP] INFO       - Successful: 1
+2025-07-21 16:31:53,160 [BACKUP] INFO       - Failed: 0
+2025-07-21 16:31:53,161 [BACKUP] INFO       - Critical failures: 0
+2025-07-21 16:31:53,161 [BACKUP] ERROR    Error sending email summary: 'AppConfig' object has no attribute 'get'
+2025-07-21 16:31:53,161 [BACKUP] ERROR    ✗ Failed to send email summary
+2025-07-21 16:31:55,030 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:31:55,031 [BACKUP] INFO     ✓ Pushover summary sent successfully
+2025-07-21 16:31:55,031 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:55,031 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:31:55,031 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:55,031 [BACKUP] INFO     Total backups checked: 1
+2025-07-21 16:31:55,031 [BACKUP] INFO     Successful: 1
+2025-07-21 16:31:55,031 [BACKUP] INFO     Failed: 0
+2025-07-21 16:31:55,031 [BACKUP] INFO     Duration: 0.01 seconds
+2025-07-21 16:31:55,031 [BACKUP] INFO     Notifications sent: ✗
+2025-07-21 16:31:55,031 [BACKUP] INFO     All backups passed validation ✓
+2025-07-21 16:31:55,031 [BACKUP] INFO     ================================================================================
+2025-07-21 16:31:55,031 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:31:55,031 [BACKUP] INFO     ================================================================================
+2025-07-21 16:35:47,798 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:35:47,799 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:35:47,799 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:35:47,799 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:35:47,799 [BACKUP] INFO     ================================================================================
+2025-07-21 16:35:47,799 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:35:47,799 [BACKUP] INFO     ================================================================================
+2025-07-21 16:35:47,799 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:35:47,801 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:35:47,802 [BACKUP] INFO       - 1 backup(s) to check
+2025-07-21 16:35:47,802 [BACKUP] INFO       - Email recipients: 1
+2025-07-21 16:35:47,802 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:35:47,802 [BACKUP] INFO       - Min free space: 1 GB
+2025-07-21 16:35:47,802 [BACKUP] INFO       - Log level: DEBUG
+2025-07-21 16:35:47,802 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:35:47,803 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:35:47,803 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:35:47,803 [BACKUP] INFO     Starting validation of 1 backup(s)
+2025-07-21 16:35:47,803 [BACKUP] INFO     [1/1] Validating backup: test-backup
+2025-07-21 16:35:47,803 [BACKUP] INFO       Directory: /tmp
+2025-07-21 16:35:47,803 [BACKUP] INFO       Max age: 30 days
+2025-07-21 16:35:47,803 [BACKUP] INFO       Min size: 1 KB
+2025-07-21 16:35:47,804 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:35:47,804 [BACKUP] INFO       ✓ Sufficient free space: 38.7 GB
+2025-07-21 16:35:47,807 [BACKUP] INFO     Backup validation passed: 86 files, total size 796.3 KB
+2025-07-21 16:35:47,807 [BACKUP] INFO       ✓ Backup validation passed: 86 files, 796.3 KB
+2025-07-21 16:35:47,807 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:35:47,807 [BACKUP] INFO     Backup validation completed: 1 passed, 0 failed
+2025-07-21 16:35:47,807 [BACKUP] INFO     Backup checks completed in 0.01 seconds
+2025-07-21 16:35:47,807 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:35:47,807 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:35:47,807 [BACKUP] INFO     Notification summary:
+2025-07-21 16:35:47,808 [BACKUP] INFO       - Total backups: 1
+2025-07-21 16:35:47,808 [BACKUP] INFO       - Successful: 1
+2025-07-21 16:35:47,808 [BACKUP] INFO       - Failed: 0
+2025-07-21 16:35:47,808 [BACKUP] INFO       - Critical failures: 0
+2025-07-21 16:35:47,808 [BACKUP] ERROR    Error sending email summary: 'AppConfig' object has no attribute 'get'
+2025-07-21 16:35:47,808 [BACKUP] ERROR    ✗ Failed to send email summary
+2025-07-21 16:36:48,857 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:36:48,858 [BACKUP] INFO     ✓ Pushover summary sent successfully
+2025-07-21 16:36:48,858 [BACKUP] INFO     ================================================================================
+2025-07-21 16:36:48,858 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:36:48,858 [BACKUP] INFO     ================================================================================
+2025-07-21 16:36:48,858 [BACKUP] INFO     Total backups checked: 1
+2025-07-21 16:36:48,858 [BACKUP] INFO     Successful: 1
+2025-07-21 16:36:48,858 [BACKUP] INFO     Failed: 0
+2025-07-21 16:36:48,858 [BACKUP] INFO     Duration: 0.01 seconds
+2025-07-21 16:36:48,858 [BACKUP] INFO     Notifications sent: ✗
+2025-07-21 16:36:48,858 [BACKUP] INFO     All backups passed validation ✓
+2025-07-21 16:36:48,858 [BACKUP] INFO     ================================================================================
+2025-07-21 16:36:48,858 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:36:48,858 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:00,519 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:37:00,519 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:37:00,520 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:37:00,520 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:37:00,520 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:00,520 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:37:00,520 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:00,520 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:37:00,522 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:37:00,523 [BACKUP] INFO       - 1 backup(s) to check
+2025-07-21 16:37:00,523 [BACKUP] INFO       - Email recipients: 1
+2025-07-21 16:37:00,523 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:37:00,523 [BACKUP] INFO       - Min free space: 1 GB
+2025-07-21 16:37:00,523 [BACKUP] INFO       - Log level: DEBUG
+2025-07-21 16:37:00,523 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:37:00,524 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:37:00,524 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:37:00,524 [BACKUP] INFO     Starting validation of 1 backup(s)
+2025-07-21 16:37:00,524 [BACKUP] INFO     [1/1] Validating backup: test-backup
+2025-07-21 16:37:00,524 [BACKUP] INFO       Directory: /tmp
+2025-07-21 16:37:00,524 [BACKUP] INFO       Max age: 30 days
+2025-07-21 16:37:00,524 [BACKUP] INFO       Min size: 1 KB
+2025-07-21 16:37:00,525 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:37:00,526 [BACKUP] INFO       ✓ Sufficient free space: 38.7 GB
+2025-07-21 16:37:00,528 [BACKUP] INFO     Backup validation passed: 87 files, total size 796.4 KB
+2025-07-21 16:37:00,528 [BACKUP] INFO       ✓ Backup validation passed: 87 files, 796.4 KB
+2025-07-21 16:37:00,529 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:37:00,529 [BACKUP] INFO     Backup validation completed: 1 passed, 0 failed
+2025-07-21 16:37:00,529 [BACKUP] INFO     Backup checks completed in 0.01 seconds
+2025-07-21 16:37:00,529 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:37:00,529 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:37:00,529 [BACKUP] INFO     Notification summary:
+2025-07-21 16:37:00,529 [BACKUP] INFO       - Total backups: 1
+2025-07-21 16:37:00,529 [BACKUP] INFO       - Successful: 1
+2025-07-21 16:37:00,529 [BACKUP] INFO       - Failed: 0
+2025-07-21 16:37:00,529 [BACKUP] INFO       - Critical failures: 0
+2025-07-21 16:37:03,347 [BACKUP] INFO     Email sent successfully to 1 recipients: ✅ Backup Check Success - All 1 Passed
+2025-07-21 16:37:03,347 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 16:37:04,325 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:37:04,325 [BACKUP] INFO     ✓ Pushover summary sent successfully
+2025-07-21 16:37:04,325 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:04,325 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:37:04,325 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:04,325 [BACKUP] INFO     Total backups checked: 1
+2025-07-21 16:37:04,325 [BACKUP] INFO     Successful: 1
+2025-07-21 16:37:04,325 [BACKUP] INFO     Failed: 0
+2025-07-21 16:37:04,325 [BACKUP] INFO     Duration: 0.01 seconds
+2025-07-21 16:37:04,325 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 16:37:04,325 [BACKUP] INFO     All backups passed validation ✓
+2025-07-21 16:37:04,325 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:04,325 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:37:04,325 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:48,735 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:37:48,735 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:37:48,736 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:37:48,736 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:37:48,736 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:48,736 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:37:48,736 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:48,736 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:37:48,747 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:37:48,748 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 16:37:48,748 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 16:37:48,748 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:37:48,748 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 16:37:48,748 [BACKUP] INFO       - Log level: INFO
+2025-07-21 16:37:48,748 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:37:48,750 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:37:48,750 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:37:48,750 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 16:37:48,750 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 16:37:48,750 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 16:37:48,751 [BACKUP] INFO       Max age: 8 days
+2025-07-21 16:37:48,751 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 16:37:48,757 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:37:48,770 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:37:48,780 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-21 16:37:48,780 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-21 16:37:48,780 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:37:48,780 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 16:37:48,780 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 16:37:48,780 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:37:48,780 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 16:37:48,792 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:37:48,802 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:37:48,811 [BACKUP] WARNING  Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:37:48,811 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:37:48,811 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:37:48,811 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 16:37:48,811 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 16:37:48,812 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:37:48,812 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 16:37:48,816 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:37:48,827 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:37:48,835 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-21 16:37:48,835 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-21 16:37:48,836 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:37:48,836 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-21 16:37:48,836 [BACKUP] INFO     Backup checks completed in 0.10 seconds
+2025-07-21 16:37:48,836 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:37:48,836 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:37:48,836 [BACKUP] INFO     Notification summary:
+2025-07-21 16:37:48,837 [BACKUP] INFO       - Total backups: 3
+2025-07-21 16:37:48,837 [BACKUP] INFO       - Successful: 2
+2025-07-21 16:37:48,837 [BACKUP] INFO       - Failed: 1
+2025-07-21 16:37:48,837 [BACKUP] INFO       - Critical failures: 1
+2025-07-21 16:37:54,460 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-21 16:37:54,460 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 16:37:55,426 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:37:55,427 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-21 16:37:55,427 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:55,427 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:37:55,427 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:55,427 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 16:37:55,427 [BACKUP] INFO     Successful: 2
+2025-07-21 16:37:55,427 [BACKUP] INFO     Failed: 1
+2025-07-21 16:37:55,427 [BACKUP] INFO     Duration: 0.10 seconds
+2025-07-21 16:37:55,427 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 16:37:55,427 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-21 16:37:55,427 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:37:55,427 [BACKUP] INFO     ================================================================================
+2025-07-21 16:37:55,427 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:37:55,427 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:12,006 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:42:12,007 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:42:12,007 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:42:12,007 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:42:12,007 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:12,007 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:42:12,007 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:12,008 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:42:12,018 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:42:12,018 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 16:42:12,018 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 16:42:12,018 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:42:12,018 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 16:42:12,018 [BACKUP] INFO       - Log level: INFO
+2025-07-21 16:42:12,018 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:42:12,019 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:42:12,020 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:42:12,020 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 16:42:12,020 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 16:42:12,020 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 16:42:12,020 [BACKUP] INFO       Max age: 8 days
+2025-07-21 16:42:12,020 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 16:42:12,025 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:12,052 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:12,064 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-21 16:42:12,064 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-21 16:42:12,064 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:42:12,064 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 16:42:12,064 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 16:42:12,064 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:42:12,064 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 16:42:12,068 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:12,100 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:12,113 [BACKUP] WARNING  Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:12,113 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:12,113 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:42:12,114 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 16:42:12,114 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 16:42:12,114 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:42:12,114 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 16:42:12,123 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:12,140 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:12,151 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-21 16:42:12,152 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-21 16:42:12,152 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:42:12,152 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-21 16:42:12,152 [BACKUP] INFO     Backup checks completed in 0.15 seconds
+2025-07-21 16:42:12,152 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:42:12,152 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:42:12,153 [BACKUP] INFO     Notification summary:
+2025-07-21 16:42:12,153 [BACKUP] INFO       - Total backups: 3
+2025-07-21 16:42:12,153 [BACKUP] INFO       - Successful: 2
+2025-07-21 16:42:12,153 [BACKUP] INFO       - Failed: 1
+2025-07-21 16:42:12,153 [BACKUP] INFO       - Critical failures: 1
+2025-07-21 16:42:14,748 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-21 16:42:14,748 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 16:42:15,715 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:42:15,715 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-21 16:42:15,716 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:15,716 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:42:15,716 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:15,716 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 16:42:15,716 [BACKUP] INFO     Successful: 2
+2025-07-21 16:42:15,716 [BACKUP] INFO     Failed: 1
+2025-07-21 16:42:15,716 [BACKUP] INFO     Duration: 0.15 seconds
+2025-07-21 16:42:15,716 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 16:42:15,716 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-21 16:42:15,716 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:15,716 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:15,716 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:42:15,716 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:33,454 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 16:42:33,454 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 16:42:33,455 [BACKUP] INFO     Log level: INFO
+2025-07-21 16:42:33,455 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 16:42:33,455 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:33,455 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 16:42:33,455 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:33,455 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 16:42:33,466 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 16:42:33,466 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 16:42:33,466 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 16:42:33,466 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 16:42:33,466 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 16:42:33,466 [BACKUP] INFO       - Log level: INFO
+2025-07-21 16:42:33,466 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 16:42:33,468 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 16:42:33,468 [BACKUP] INFO     Starting backup validation process
+2025-07-21 16:42:33,468 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 16:42:33,468 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 16:42:33,468 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 16:42:33,469 [BACKUP] INFO       Max age: 8 days
+2025-07-21 16:42:33,469 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 16:42:33,475 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:33,489 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:33,501 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-21 16:42:33,505 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-21 16:42:33,505 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:42:33,505 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 16:42:33,506 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 16:42:33,506 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:42:33,506 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 16:42:33,510 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:33,520 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:33,526 [BACKUP] WARNING  Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:33,526 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:33,526 [BACKUP] INFO       ✗ FAILED
+2025-07-21 16:42:33,526 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 16:42:33,526 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 16:42:33,527 [BACKUP] INFO       Max age: 1 days
+2025-07-21 16:42:33,527 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 16:42:33,530 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 16:42:33,540 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 16:42:33,556 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-21 16:42:33,557 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-21 16:42:33,557 [BACKUP] INFO       ✓ PASSED
+2025-07-21 16:42:33,557 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-21 16:42:33,557 [BACKUP] INFO     Backup checks completed in 0.10 seconds
+2025-07-21 16:42:33,557 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 16:42:33,557 [BACKUP] INFO     Preparing notifications
+2025-07-21 16:42:33,557 [BACKUP] INFO     Notification summary:
+2025-07-21 16:42:33,557 [BACKUP] INFO       - Total backups: 3
+2025-07-21 16:42:33,558 [BACKUP] INFO       - Successful: 2
+2025-07-21 16:42:33,558 [BACKUP] INFO       - Failed: 1
+2025-07-21 16:42:33,558 [BACKUP] INFO       - Critical failures: 1
+2025-07-21 16:42:37,038 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-21 16:42:37,039 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 16:42:37,999 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 16:42:38,000 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-21 16:42:38,000 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:38,000 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 16:42:38,000 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:38,000 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 16:42:38,000 [BACKUP] INFO     Successful: 2
+2025-07-21 16:42:38,000 [BACKUP] INFO     Failed: 1
+2025-07-21 16:42:38,000 [BACKUP] INFO     Duration: 0.10 seconds
+2025-07-21 16:42:38,000 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 16:42:38,000 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-21 16:42:38,000 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 16:42:38,000 [BACKUP] INFO     ================================================================================
+2025-07-21 16:42:38,000 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 16:42:38,000 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:12,363 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 17:07:12,363 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 17:07:12,363 [BACKUP] INFO     Log level: INFO
+2025-07-21 17:07:12,363 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 17:07:12,363 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:12,364 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 17:07:12,364 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:12,364 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 17:07:12,374 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 17:07:12,374 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 17:07:12,374 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 17:07:12,374 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 17:07:12,374 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 17:07:12,375 [BACKUP] INFO       - Log level: INFO
+2025-07-21 17:07:12,375 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 17:07:12,376 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 17:07:12,376 [BACKUP] INFO     Starting backup validation process
+2025-07-21 17:07:12,376 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 17:07:12,376 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 17:07:12,376 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 17:07:12,377 [BACKUP] INFO       Max age: 8 days
+2025-07-21 17:07:12,377 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 17:07:12,383 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:07:12,400 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:07:12,410 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-21 17:07:12,410 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-21 17:07:12,410 [BACKUP] INFO       ✓ PASSED
+2025-07-21 17:07:12,410 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 17:07:12,410 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 17:07:12,410 [BACKUP] INFO       Max age: 1 days
+2025-07-21 17:07:12,410 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 17:07:12,414 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:07:12,425 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:07:12,431 [BACKUP] WARNING  Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:07:12,431 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:07:12,431 [BACKUP] INFO       ✗ FAILED
+2025-07-21 17:07:12,431 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 17:07:12,431 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 17:07:12,432 [BACKUP] INFO       Max age: 1 days
+2025-07-21 17:07:12,432 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 17:07:12,440 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:07:12,451 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:07:12,460 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-21 17:07:12,460 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-21 17:07:12,460 [BACKUP] INFO       ✓ PASSED
+2025-07-21 17:07:12,460 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-21 17:07:12,460 [BACKUP] INFO     Backup checks completed in 0.10 seconds
+2025-07-21 17:07:12,460 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 17:07:12,460 [BACKUP] INFO     Preparing notifications
+2025-07-21 17:07:12,460 [BACKUP] INFO     Notification summary:
+2025-07-21 17:07:12,460 [BACKUP] INFO       - Total backups: 3
+2025-07-21 17:07:12,461 [BACKUP] INFO       - Successful: 2
+2025-07-21 17:07:12,461 [BACKUP] INFO       - Failed: 1
+2025-07-21 17:07:12,461 [BACKUP] INFO       - Critical failures: 1
+2025-07-21 17:07:15,170 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-21 17:07:15,170 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 17:07:17,167 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 17:07:17,167 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-21 17:07:17,168 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:17,168 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 17:07:17,168 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:17,168 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 17:07:17,168 [BACKUP] INFO     Successful: 2
+2025-07-21 17:07:17,168 [BACKUP] INFO     Failed: 1
+2025-07-21 17:07:17,168 [BACKUP] INFO     Duration: 0.10 seconds
+2025-07-21 17:07:17,168 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 17:07:17,168 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-21 17:07:17,168 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:07:17,168 [BACKUP] INFO     ================================================================================
+2025-07-21 17:07:17,168 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 17:07:17,168 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:02,171 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-21 17:13:02,172 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-21 17:13:02,172 [BACKUP] INFO     Log level: INFO
+2025-07-21 17:13:02,172 [BACKUP] INFO     Rotation: weekly_4
+2025-07-21 17:13:02,172 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:02,172 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-21 17:13:02,172 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:02,173 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-21 17:13:02,183 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-21 17:13:02,183 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-21 17:13:02,183 [BACKUP] INFO       - Email recipients: 2
+2025-07-21 17:13:02,183 [BACKUP] INFO       - Pushover priority: -1
+2025-07-21 17:13:02,184 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-21 17:13:02,184 [BACKUP] INFO       - Log level: INFO
+2025-07-21 17:13:02,184 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-21 17:13:02,185 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-21 17:13:02,185 [BACKUP] INFO     Starting backup validation process
+2025-07-21 17:13:02,185 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-21 17:13:02,186 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-21 17:13:02,186 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-21 17:13:02,186 [BACKUP] INFO       Max age: 8 days
+2025-07-21 17:13:02,186 [BACKUP] INFO       Min size: 10 GB
+2025-07-21 17:13:02,192 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:13:02,206 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:13:02,215 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-21 17:13:02,216 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-21 17:13:02,216 [BACKUP] INFO       ✓ PASSED
+2025-07-21 17:13:02,216 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-21 17:13:02,216 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-21 17:13:02,216 [BACKUP] INFO       Max age: 1 days
+2025-07-21 17:13:02,216 [BACKUP] INFO       Min size: 30 GB
+2025-07-21 17:13:02,220 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:13:02,231 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:13:02,240 [BACKUP] WARNING  Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:13:02,240 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:13:02,240 [BACKUP] INFO       ✗ FAILED
+2025-07-21 17:13:02,240 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-21 17:13:02,240 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-21 17:13:02,240 [BACKUP] INFO       Max age: 1 days
+2025-07-21 17:13:02,240 [BACKUP] INFO       Min size: 10 KB
+2025-07-21 17:13:02,247 [BACKUP] INFO       ✓ Directory accessible
+2025-07-21 17:13:02,259 [BACKUP] INFO       ✓ Sufficient free space: 827.3 GB
+2025-07-21 17:13:02,265 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-21 17:13:02,265 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-21 17:13:02,265 [BACKUP] INFO       ✓ PASSED
+2025-07-21 17:13:02,265 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-21 17:13:02,266 [BACKUP] INFO     Backup checks completed in 0.09 seconds
+2025-07-21 17:13:02,266 [BACKUP] INFO     Processing results and sending notifications
+2025-07-21 17:13:02,266 [BACKUP] INFO     Preparing notifications
+2025-07-21 17:13:02,266 [BACKUP] INFO     Notification summary:
+2025-07-21 17:13:02,266 [BACKUP] INFO       - Total backups: 3
+2025-07-21 17:13:02,266 [BACKUP] INFO       - Successful: 2
+2025-07-21 17:13:02,266 [BACKUP] INFO       - Failed: 1
+2025-07-21 17:13:02,266 [BACKUP] INFO       - Critical failures: 1
+2025-07-21 17:13:05,301 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-21 17:13:05,302 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-21 17:13:09,332 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-21 17:13:09,332 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-21 17:13:09,332 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:09,332 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-21 17:13:09,332 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:09,332 [BACKUP] INFO     Total backups checked: 3
+2025-07-21 17:13:09,332 [BACKUP] INFO     Successful: 2
+2025-07-21 17:13:09,332 [BACKUP] INFO     Failed: 1
+2025-07-21 17:13:09,333 [BACKUP] INFO     Duration: 0.09 seconds
+2025-07-21 17:13:09,333 [BACKUP] INFO     Notifications sent: ✓
+2025-07-21 17:13:09,333 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-21 17:13:09,333 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 189.6 MB is below minimum requirement 30 GB
+2025-07-21 17:13:09,333 [BACKUP] INFO     ================================================================================
+2025-07-21 17:13:09,333 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-21 17:13:09,333 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:30,145 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-23 14:39:30,145 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-23 14:39:30,145 [BACKUP] INFO     Log level: INFO
+2025-07-23 14:39:30,145 [BACKUP] INFO     Rotation: weekly_4
+2025-07-23 14:39:30,145 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:30,145 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-23 14:39:30,145 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:30,145 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-23 14:39:30,153 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-23 14:39:30,153 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-23 14:39:30,153 [BACKUP] INFO       - Email recipients: 2
+2025-07-23 14:39:30,153 [BACKUP] INFO       - Pushover priority: -1
+2025-07-23 14:39:30,153 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-23 14:39:30,153 [BACKUP] INFO       - Log level: INFO
+2025-07-23 14:39:30,153 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-23 14:39:30,155 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-23 14:39:30,155 [BACKUP] INFO     Starting backup validation process
+2025-07-23 14:39:30,155 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-23 14:39:30,155 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-23 14:39:30,155 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-23 14:39:30,155 [BACKUP] INFO       Max age: 8 days
+2025-07-23 14:39:30,155 [BACKUP] INFO       Min size: 10 GB
+2025-07-23 14:39:30,160 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:39:30,169 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:39:30,177 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-23 14:39:30,177 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-23 14:39:30,177 [BACKUP] INFO       ✓ PASSED
+2025-07-23 14:39:30,177 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-23 14:39:30,177 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-23 14:39:30,177 [BACKUP] INFO       Max age: 1 days
+2025-07-23 14:39:30,177 [BACKUP] INFO       Min size: 30 GB
+2025-07-23 14:39:30,181 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:39:30,190 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:39:30,195 [BACKUP] WARNING  Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:39:30,195 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:39:30,195 [BACKUP] INFO       ✗ FAILED
+2025-07-23 14:39:30,195 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-23 14:39:30,195 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-23 14:39:30,196 [BACKUP] INFO       Max age: 1 days
+2025-07-23 14:39:30,196 [BACKUP] INFO       Min size: 10 KB
+2025-07-23 14:39:30,199 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:39:30,206 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:39:30,211 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.7 KB
+2025-07-23 14:39:30,211 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.7 KB
+2025-07-23 14:39:30,211 [BACKUP] INFO       ✓ PASSED
+2025-07-23 14:39:30,211 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-23 14:39:30,211 [BACKUP] INFO     Backup checks completed in 0.07 seconds
+2025-07-23 14:39:30,211 [BACKUP] INFO     Processing results and sending notifications
+2025-07-23 14:39:30,211 [BACKUP] INFO     Preparing notifications
+2025-07-23 14:39:30,211 [BACKUP] INFO     Notification summary:
+2025-07-23 14:39:30,211 [BACKUP] INFO       - Total backups: 3
+2025-07-23 14:39:30,211 [BACKUP] INFO       - Successful: 2
+2025-07-23 14:39:30,211 [BACKUP] INFO       - Failed: 1
+2025-07-23 14:39:30,211 [BACKUP] INFO       - Critical failures: 1
+2025-07-23 14:39:33,098 [BACKUP] INFO     Email sent successfully to 2 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-23 14:39:33,098 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-23 14:39:35,373 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-23 14:39:35,373 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-23 14:39:35,373 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:35,373 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-23 14:39:35,373 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:35,373 [BACKUP] INFO     Total backups checked: 3
+2025-07-23 14:39:35,373 [BACKUP] INFO     Successful: 2
+2025-07-23 14:39:35,373 [BACKUP] INFO     Failed: 1
+2025-07-23 14:39:35,374 [BACKUP] INFO     Duration: 0.07 seconds
+2025-07-23 14:39:35,374 [BACKUP] INFO     Notifications sent: ✓
+2025-07-23 14:39:35,374 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-23 14:39:35,374 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:39:35,374 [BACKUP] INFO     ================================================================================
+2025-07-23 14:39:35,374 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-23 14:39:35,374 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:00,508 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-23 14:42:00,508 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-23 14:42:00,508 [BACKUP] INFO     Log level: INFO
+2025-07-23 14:42:00,508 [BACKUP] INFO     Rotation: weekly_4
+2025-07-23 14:42:00,508 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:00,508 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-23 14:42:00,509 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:00,509 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-23 14:42:00,516 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-23 14:42:00,516 [BACKUP] INFO       - 3 backup(s) to check
+2025-07-23 14:42:00,516 [BACKUP] INFO       - Email recipients: 1
+2025-07-23 14:42:00,516 [BACKUP] INFO       - Pushover priority: -1
+2025-07-23 14:42:00,516 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-23 14:42:00,516 [BACKUP] INFO       - Log level: INFO
+2025-07-23 14:42:00,516 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-23 14:42:00,517 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-23 14:42:00,517 [BACKUP] INFO     Starting backup validation process
+2025-07-23 14:42:00,517 [BACKUP] INFO     Starting validation of 3 backup(s)
+2025-07-23 14:42:00,517 [BACKUP] INFO     [1/3] Validating backup: proxmox
+2025-07-23 14:42:00,517 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-23 14:42:00,517 [BACKUP] INFO       Max age: 8 days
+2025-07-23 14:42:00,518 [BACKUP] INFO       Min size: 10 GB
+2025-07-23 14:42:00,522 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:42:00,532 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:42:00,541 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-23 14:42:00,541 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-23 14:42:00,541 [BACKUP] INFO       ✓ PASSED
+2025-07-23 14:42:00,542 [BACKUP] INFO     [2/3] Validating backup: homeassistant
+2025-07-23 14:42:00,542 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-23 14:42:00,542 [BACKUP] INFO       Max age: 1 days
+2025-07-23 14:42:00,542 [BACKUP] INFO       Min size: 30 GB
+2025-07-23 14:42:00,544 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:42:00,551 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:42:00,556 [BACKUP] WARNING  Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:42:00,556 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:42:00,556 [BACKUP] INFO       ✗ FAILED
+2025-07-23 14:42:00,557 [BACKUP] INFO     [3/3] Validating backup: proxmox-config
+2025-07-23 14:42:00,557 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-23 14:42:00,557 [BACKUP] INFO       Max age: 1 days
+2025-07-23 14:42:00,557 [BACKUP] INFO       Min size: 10 KB
+2025-07-23 14:42:00,560 [BACKUP] INFO       ✓ Directory accessible
+2025-07-23 14:42:00,567 [BACKUP] INFO       ✓ Sufficient free space: 826.9 GB
+2025-07-23 14:42:00,574 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.7 KB
+2025-07-23 14:42:00,575 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.7 KB
+2025-07-23 14:42:00,575 [BACKUP] INFO       ✓ PASSED
+2025-07-23 14:42:00,575 [BACKUP] INFO     Backup validation completed: 2 passed, 1 failed
+2025-07-23 14:42:00,575 [BACKUP] INFO     Backup checks completed in 0.07 seconds
+2025-07-23 14:42:00,575 [BACKUP] INFO     Processing results and sending notifications
+2025-07-23 14:42:00,575 [BACKUP] INFO     Preparing notifications
+2025-07-23 14:42:00,575 [BACKUP] INFO     Notification summary:
+2025-07-23 14:42:00,575 [BACKUP] INFO       - Total backups: 3
+2025-07-23 14:42:00,575 [BACKUP] INFO       - Successful: 2
+2025-07-23 14:42:00,575 [BACKUP] INFO       - Failed: 1
+2025-07-23 14:42:00,575 [BACKUP] INFO       - Critical failures: 1
+2025-07-23 14:42:03,139 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/3 Failed
+2025-07-23 14:42:03,139 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-23 14:42:04,072 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-23 14:42:04,072 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-23 14:42:04,072 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:04,072 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-23 14:42:04,072 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:04,073 [BACKUP] INFO     Total backups checked: 3
+2025-07-23 14:42:04,073 [BACKUP] INFO     Successful: 2
+2025-07-23 14:42:04,073 [BACKUP] INFO     Failed: 1
+2025-07-23 14:42:04,073 [BACKUP] INFO     Duration: 0.07 seconds
+2025-07-23 14:42:04,073 [BACKUP] INFO     Notifications sent: ✓
+2025-07-23 14:42:04,073 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-23 14:42:04,073 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 187.3 MB is below minimum requirement 30 GB
+2025-07-23 14:42:04,073 [BACKUP] INFO     ================================================================================
+2025-07-23 14:42:04,073 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-23 14:42:04,073 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:02,215 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-25 06:00:02,216 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-25 06:00:02,216 [BACKUP] INFO     Log level: INFO
+2025-07-25 06:00:02,216 [BACKUP] INFO     Rotation: weekly_4
+2025-07-25 06:00:02,216 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:02,216 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-25 06:00:02,216 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:02,216 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-25 06:00:02,225 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-25 06:00:02,225 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-25 06:00:02,225 [BACKUP] INFO       - Email recipients: 1
+2025-07-25 06:00:02,225 [BACKUP] INFO       - Pushover priority: -1
+2025-07-25 06:00:02,225 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-25 06:00:02,225 [BACKUP] INFO       - Log level: INFO
+2025-07-25 06:00:02,225 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-25 06:00:02,227 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-25 06:00:02,228 [BACKUP] INFO     Starting backup validation process
+2025-07-25 06:00:02,228 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-25 06:00:02,228 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-25 06:00:02,228 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-25 06:00:02,228 [BACKUP] INFO       Max age: 8 days
+2025-07-25 06:00:02,228 [BACKUP] INFO       Min size: 10 GB
+2025-07-25 06:00:02,232 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 06:00:02,241 [BACKUP] INFO       ✓ Sufficient free space: 821.8 GB
+2025-07-25 06:00:02,248 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-25 06:00:02,248 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-25 06:00:02,248 [BACKUP] INFO       ✓ PASSED
+2025-07-25 06:00:02,248 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-25 06:00:02,249 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-25 06:00:02,249 [BACKUP] INFO       Max age: 1 days
+2025-07-25 06:00:02,249 [BACKUP] INFO       Min size: 100 MB
+2025-07-25 06:00:02,251 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 06:00:02,259 [BACKUP] INFO       ✓ Sufficient free space: 821.8 GB
+2025-07-25 06:00:02,264 [BACKUP] WARNING  No files found modified within 1 days in /mnt/backup_usb1/homeassistant
+2025-07-25 06:00:02,264 [BACKUP] ERROR      ✗ Backup freshness check failed: No files found modified within 1 days in /mnt/backup_usb1/homeassistant
+2025-07-25 06:00:02,264 [BACKUP] INFO       ✗ FAILED
+2025-07-25 06:00:02,264 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-25 06:00:02,265 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-25 06:00:02,265 [BACKUP] INFO       Max age: 1 days
+2025-07-25 06:00:02,265 [BACKUP] INFO       Min size: 10 KB
+2025-07-25 06:00:02,267 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 06:00:02,275 [BACKUP] INFO       ✓ Sufficient free space: 821.8 GB
+2025-07-25 06:00:02,279 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-25 06:00:02,280 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-25 06:00:02,280 [BACKUP] INFO       ✓ PASSED
+2025-07-25 06:00:02,280 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-25 06:00:02,280 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-25 06:00:02,280 [BACKUP] INFO       Max age: 32 days
+2025-07-25 06:00:02,280 [BACKUP] INFO       Min size: 1 GB
+2025-07-25 06:00:02,282 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 06:00:02,289 [BACKUP] INFO       ✓ Sufficient free space: 821.8 GB
+2025-07-25 06:00:02,293 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-25 06:00:02,294 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-25 06:00:02,294 [BACKUP] INFO       ✓ PASSED
+2025-07-25 06:00:02,294 [BACKUP] INFO     Backup validation completed: 3 passed, 1 failed
+2025-07-25 06:00:02,294 [BACKUP] INFO     Backup checks completed in 0.08 seconds
+2025-07-25 06:00:02,294 [BACKUP] INFO     Processing results and sending notifications
+2025-07-25 06:00:02,294 [BACKUP] INFO     Preparing notifications
+2025-07-25 06:00:02,294 [BACKUP] INFO     Notification summary:
+2025-07-25 06:00:02,294 [BACKUP] INFO       - Total backups: 4
+2025-07-25 06:00:02,294 [BACKUP] INFO       - Successful: 3
+2025-07-25 06:00:02,294 [BACKUP] INFO       - Failed: 1
+2025-07-25 06:00:02,294 [BACKUP] INFO       - Critical failures: 0
+2025-07-25 06:00:07,811 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/4 Failed
+2025-07-25 06:00:07,811 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-25 06:00:07,811 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:07,811 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-25 06:00:07,811 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:07,811 [BACKUP] INFO     Total backups checked: 4
+2025-07-25 06:00:07,811 [BACKUP] INFO     Successful: 3
+2025-07-25 06:00:07,811 [BACKUP] INFO     Failed: 1
+2025-07-25 06:00:07,811 [BACKUP] INFO     Duration: 0.08 seconds
+2025-07-25 06:00:07,811 [BACKUP] INFO     Notifications sent: ✓
+2025-07-25 06:00:07,812 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-25 06:00:07,812 [BACKUP] WARNING    - homeassistant: Backup validation failed: No files found modified within 1 days in /mnt/backup_usb1/homeassistant
+2025-07-25 06:00:07,812 [BACKUP] INFO     ================================================================================
+2025-07-25 06:00:07,812 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-25 06:00:07,812 [BACKUP] INFO     ================================================================================
+2025-07-25 10:13:58,761 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-25 10:13:58,761 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-25 10:13:58,761 [BACKUP] INFO     Log level: INFO
+2025-07-25 10:13:58,761 [BACKUP] INFO     Rotation: weekly_4
+2025-07-25 10:13:58,761 [BACKUP] INFO     ================================================================================
+2025-07-25 10:13:58,761 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-25 10:13:58,761 [BACKUP] INFO     ================================================================================
+2025-07-25 10:13:58,762 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-25 10:13:58,774 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-25 10:13:58,774 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-25 10:13:58,774 [BACKUP] INFO       - Email recipients: 1
+2025-07-25 10:13:58,774 [BACKUP] INFO       - Pushover priority: -1
+2025-07-25 10:13:58,774 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-25 10:13:58,774 [BACKUP] INFO       - Log level: INFO
+2025-07-25 10:13:58,774 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-25 10:13:58,775 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-25 10:13:58,776 [BACKUP] INFO     Starting backup validation process
+2025-07-25 10:13:58,776 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-25 10:13:58,776 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-25 10:13:58,776 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-25 10:13:58,776 [BACKUP] INFO       Max age: 8 days
+2025-07-25 10:13:58,776 [BACKUP] INFO       Min size: 10 GB
+2025-07-25 10:13:58,781 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:13:58,791 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:13:58,799 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-25 10:13:58,799 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-25 10:13:58,800 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:13:58,800 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-25 10:13:58,800 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-25 10:13:58,800 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:13:58,800 [BACKUP] INFO       Min size: 100 MB
+2025-07-25 10:13:58,803 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:13:58,811 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:13:58,817 [BACKUP] WARNING  Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:13:58,818 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:13:58,818 [BACKUP] INFO       ✗ FAILED
+2025-07-25 10:13:58,818 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-25 10:13:58,818 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-25 10:13:58,818 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:13:58,818 [BACKUP] INFO       Min size: 10 KB
+2025-07-25 10:13:58,821 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:13:58,829 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:13:58,835 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-25 10:13:58,835 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-25 10:13:58,835 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:13:58,835 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-25 10:13:58,835 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-25 10:13:58,835 [BACKUP] INFO       Max age: 32 days
+2025-07-25 10:13:58,835 [BACKUP] INFO       Min size: 1 GB
+2025-07-25 10:13:58,839 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:13:58,847 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:13:58,853 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-25 10:13:58,853 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-25 10:13:58,853 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:13:58,853 [BACKUP] INFO     Backup validation completed: 3 passed, 1 failed
+2025-07-25 10:13:58,853 [BACKUP] INFO     Backup checks completed in 0.09 seconds
+2025-07-25 10:13:58,854 [BACKUP] INFO     Processing results and sending notifications
+2025-07-25 10:13:58,854 [BACKUP] INFO     Preparing notifications
+2025-07-25 10:13:58,854 [BACKUP] INFO     Notification summary:
+2025-07-25 10:13:58,854 [BACKUP] INFO       - Total backups: 4
+2025-07-25 10:13:58,854 [BACKUP] INFO       - Successful: 3
+2025-07-25 10:13:58,854 [BACKUP] INFO       - Failed: 1
+2025-07-25 10:13:58,854 [BACKUP] INFO       - Critical failures: 1
+2025-07-25 10:14:02,060 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/4 Failed
+2025-07-25 10:14:02,060 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-25 10:14:03,272 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-25 10:14:03,272 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-25 10:14:03,273 [BACKUP] INFO     ================================================================================
+2025-07-25 10:14:03,273 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-25 10:14:03,273 [BACKUP] INFO     ================================================================================
+2025-07-25 10:14:03,273 [BACKUP] INFO     Total backups checked: 4
+2025-07-25 10:14:03,273 [BACKUP] INFO     Successful: 3
+2025-07-25 10:14:03,273 [BACKUP] INFO     Failed: 1
+2025-07-25 10:14:03,273 [BACKUP] INFO     Duration: 0.09 seconds
+2025-07-25 10:14:03,273 [BACKUP] INFO     Notifications sent: ✓
+2025-07-25 10:14:03,273 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-25 10:14:03,273 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:14:03,273 [BACKUP] INFO     ================================================================================
+2025-07-25 10:14:03,273 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-25 10:14:03,273 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:47,161 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-25 10:19:47,161 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-25 10:19:47,161 [BACKUP] INFO     Log level: INFO
+2025-07-25 10:19:47,161 [BACKUP] INFO     Rotation: weekly_4
+2025-07-25 10:19:47,161 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:47,161 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-25 10:19:47,161 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:47,161 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-25 10:19:47,171 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-25 10:19:47,171 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-25 10:19:47,171 [BACKUP] INFO       - Email recipients: 1
+2025-07-25 10:19:47,171 [BACKUP] INFO       - Pushover priority: -1
+2025-07-25 10:19:47,171 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-25 10:19:47,171 [BACKUP] INFO       - Log level: INFO
+2025-07-25 10:19:47,171 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-25 10:19:47,173 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-25 10:19:47,173 [BACKUP] INFO     Starting backup validation process
+2025-07-25 10:19:47,173 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-25 10:19:47,173 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-25 10:19:47,173 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-25 10:19:47,173 [BACKUP] INFO       Max age: 8 days
+2025-07-25 10:19:47,173 [BACKUP] INFO       Min size: 10 GB
+2025-07-25 10:19:47,178 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:19:47,188 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:19:47,196 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-25 10:19:47,196 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-25 10:19:47,196 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:19:47,196 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-25 10:19:47,196 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-25 10:19:47,197 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:19:47,197 [BACKUP] INFO       Min size: 100 MB
+2025-07-25 10:19:47,200 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:19:47,210 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:19:47,216 [BACKUP] WARNING  Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:19:47,216 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:19:47,217 [BACKUP] INFO       ✗ FAILED
+2025-07-25 10:19:47,217 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-25 10:19:47,217 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-25 10:19:47,217 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:19:47,217 [BACKUP] INFO       Min size: 10 KB
+2025-07-25 10:19:47,220 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:19:47,228 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:19:47,234 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-25 10:19:47,234 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-25 10:19:47,234 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:19:47,234 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-25 10:19:47,234 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-25 10:19:47,234 [BACKUP] INFO       Max age: 32 days
+2025-07-25 10:19:47,234 [BACKUP] INFO       Min size: 1 GB
+2025-07-25 10:19:47,237 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:19:47,247 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:19:47,252 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-25 10:19:47,252 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-25 10:19:47,252 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:19:47,252 [BACKUP] INFO     Backup validation completed: 3 passed, 1 failed
+2025-07-25 10:19:47,252 [BACKUP] INFO     Backup checks completed in 0.09 seconds
+2025-07-25 10:19:47,252 [BACKUP] INFO     Processing results and sending notifications
+2025-07-25 10:19:47,252 [BACKUP] INFO     Preparing notifications
+2025-07-25 10:19:47,252 [BACKUP] INFO     Notification summary:
+2025-07-25 10:19:47,252 [BACKUP] INFO       - Total backups: 4
+2025-07-25 10:19:47,252 [BACKUP] INFO       - Successful: 3
+2025-07-25 10:19:47,252 [BACKUP] INFO       - Failed: 1
+2025-07-25 10:19:47,252 [BACKUP] INFO       - Critical failures: 1
+2025-07-25 10:19:57,665 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/4 Failed
+2025-07-25 10:19:57,665 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-25 10:19:58,883 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-25 10:19:58,883 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-25 10:19:58,883 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:58,884 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-25 10:19:58,884 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:58,884 [BACKUP] INFO     Total backups checked: 4
+2025-07-25 10:19:58,884 [BACKUP] INFO     Successful: 3
+2025-07-25 10:19:58,884 [BACKUP] INFO     Failed: 1
+2025-07-25 10:19:58,884 [BACKUP] INFO     Duration: 0.09 seconds
+2025-07-25 10:19:58,884 [BACKUP] INFO     Notifications sent: ✓
+2025-07-25 10:19:58,884 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-25 10:19:58,884 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:19:58,884 [BACKUP] INFO     ================================================================================
+2025-07-25 10:19:58,884 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-25 10:19:58,884 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:52,438 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-25 10:20:52,438 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-25 10:20:52,438 [BACKUP] INFO     Log level: INFO
+2025-07-25 10:20:52,438 [BACKUP] INFO     Rotation: weekly_4
+2025-07-25 10:20:52,438 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:52,438 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-25 10:20:52,438 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:52,438 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-25 10:20:52,456 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-25 10:20:52,456 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-25 10:20:52,456 [BACKUP] INFO       - Email recipients: 1
+2025-07-25 10:20:52,456 [BACKUP] INFO       - Pushover priority: -1
+2025-07-25 10:20:52,456 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-25 10:20:52,457 [BACKUP] INFO       - Log level: INFO
+2025-07-25 10:20:52,457 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-25 10:20:52,458 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-25 10:20:52,458 [BACKUP] INFO     Starting backup validation process
+2025-07-25 10:20:52,458 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-25 10:20:52,458 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-25 10:20:52,458 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-25 10:20:52,458 [BACKUP] INFO       Max age: 8 days
+2025-07-25 10:20:52,458 [BACKUP] INFO       Min size: 10 GB
+2025-07-25 10:20:52,464 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:20:52,477 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:20:52,488 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-25 10:20:52,488 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-25 10:20:52,488 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:20:52,488 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-25 10:20:52,488 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-25 10:20:52,488 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:20:52,488 [BACKUP] INFO       Min size: 100 MB
+2025-07-25 10:20:52,492 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:20:52,502 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:20:52,511 [BACKUP] WARNING  Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:20:52,511 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:20:52,511 [BACKUP] INFO       ✗ FAILED
+2025-07-25 10:20:52,511 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-25 10:20:52,511 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-25 10:20:52,512 [BACKUP] INFO       Max age: 1 days
+2025-07-25 10:20:52,512 [BACKUP] INFO       Min size: 10 KB
+2025-07-25 10:20:52,518 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:20:52,529 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:20:52,537 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-25 10:20:52,537 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-25 10:20:52,537 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:20:52,537 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-25 10:20:52,537 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-25 10:20:52,538 [BACKUP] INFO       Max age: 32 days
+2025-07-25 10:20:52,538 [BACKUP] INFO       Min size: 1 GB
+2025-07-25 10:20:52,548 [BACKUP] INFO       ✓ Directory accessible
+2025-07-25 10:20:52,562 [BACKUP] INFO       ✓ Sufficient free space: 821.7 GB
+2025-07-25 10:20:52,572 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-25 10:20:52,572 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-25 10:20:52,572 [BACKUP] INFO       ✓ PASSED
+2025-07-25 10:20:52,572 [BACKUP] INFO     Backup validation completed: 3 passed, 1 failed
+2025-07-25 10:20:52,572 [BACKUP] INFO     Backup checks completed in 0.13 seconds
+2025-07-25 10:20:52,572 [BACKUP] INFO     Processing results and sending notifications
+2025-07-25 10:20:52,572 [BACKUP] INFO     Preparing notifications
+2025-07-25 10:20:52,572 [BACKUP] INFO     Notification summary:
+2025-07-25 10:20:52,572 [BACKUP] INFO       - Total backups: 4
+2025-07-25 10:20:52,572 [BACKUP] INFO       - Successful: 3
+2025-07-25 10:20:52,572 [BACKUP] INFO       - Failed: 1
+2025-07-25 10:20:52,572 [BACKUP] INFO       - Critical failures: 1
+2025-07-25 10:20:56,297 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/4 Failed
+2025-07-25 10:20:56,298 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-25 10:20:58,422 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-25 10:20:58,422 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-25 10:20:58,422 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:58,422 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-25 10:20:58,422 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:58,422 [BACKUP] INFO     Total backups checked: 4
+2025-07-25 10:20:58,422 [BACKUP] INFO     Successful: 3
+2025-07-25 10:20:58,422 [BACKUP] INFO     Failed: 1
+2025-07-25 10:20:58,422 [BACKUP] INFO     Duration: 0.13 seconds
+2025-07-25 10:20:58,422 [BACKUP] INFO     Notifications sent: ✓
+2025-07-25 10:20:58,422 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-25 10:20:58,423 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 92.5 MB is below minimum requirement 100 MB
+2025-07-25 10:20:58,423 [BACKUP] INFO     ================================================================================
+2025-07-25 10:20:58,423 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-25 10:20:58,423 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:02,229 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-26 06:00:02,230 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-26 06:00:02,231 [BACKUP] INFO     Log level: INFO
+2025-07-26 06:00:02,231 [BACKUP] INFO     Rotation: weekly_4
+2025-07-26 06:00:02,231 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:02,231 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-26 06:00:02,231 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:02,231 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-26 06:00:02,242 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-26 06:00:02,242 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-26 06:00:02,242 [BACKUP] INFO       - Email recipients: 1
+2025-07-26 06:00:02,243 [BACKUP] INFO       - Pushover priority: -1
+2025-07-26 06:00:02,243 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-26 06:00:02,243 [BACKUP] INFO       - Log level: INFO
+2025-07-26 06:00:02,243 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-26 06:00:02,245 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-26 06:00:02,245 [BACKUP] INFO     Starting backup validation process
+2025-07-26 06:00:02,245 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-26 06:00:02,245 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-26 06:00:02,245 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-26 06:00:02,245 [BACKUP] INFO       Max age: 8 days
+2025-07-26 06:00:02,245 [BACKUP] INFO       Min size: 10 GB
+2025-07-26 06:00:02,253 [BACKUP] INFO       ✓ Directory accessible
+2025-07-26 06:00:02,262 [BACKUP] INFO       ✓ Sufficient free space: 816.8 GB
+2025-07-26 06:00:02,270 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-26 06:00:02,270 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-26 06:00:02,270 [BACKUP] INFO       ✓ PASSED
+2025-07-26 06:00:02,270 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-26 06:00:02,270 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-26 06:00:02,270 [BACKUP] INFO       Max age: 1 days
+2025-07-26 06:00:02,270 [BACKUP] INFO       Min size: 100 MB
+2025-07-26 06:00:02,273 [BACKUP] INFO       ✓ Directory accessible
+2025-07-26 06:00:02,280 [BACKUP] INFO       ✓ Sufficient free space: 816.8 GB
+2025-07-26 06:00:02,285 [BACKUP] INFO     Backup validation passed: 2 files, total size 184.6 MB
+2025-07-26 06:00:02,285 [BACKUP] INFO       ✓ Backup validation passed: 2 files, 184.6 MB
+2025-07-26 06:00:02,285 [BACKUP] INFO       ✓ PASSED
+2025-07-26 06:00:02,285 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-26 06:00:02,285 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-26 06:00:02,285 [BACKUP] INFO       Max age: 1 days
+2025-07-26 06:00:02,286 [BACKUP] INFO       Min size: 10 KB
+2025-07-26 06:00:02,289 [BACKUP] INFO       ✓ Directory accessible
+2025-07-26 06:00:02,296 [BACKUP] INFO       ✓ Sufficient free space: 816.8 GB
+2025-07-26 06:00:02,301 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-26 06:00:02,301 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-26 06:00:02,301 [BACKUP] INFO       ✓ PASSED
+2025-07-26 06:00:02,301 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-26 06:00:02,301 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-26 06:00:02,301 [BACKUP] INFO       Max age: 32 days
+2025-07-26 06:00:02,301 [BACKUP] INFO       Min size: 1 GB
+2025-07-26 06:00:02,304 [BACKUP] INFO       ✓ Directory accessible
+2025-07-26 06:00:02,311 [BACKUP] INFO       ✓ Sufficient free space: 816.8 GB
+2025-07-26 06:00:02,394 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-26 06:00:02,394 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-26 06:00:02,394 [BACKUP] INFO       ✓ PASSED
+2025-07-26 06:00:02,394 [BACKUP] INFO     Backup validation completed: 4 passed, 0 failed
+2025-07-26 06:00:02,394 [BACKUP] INFO     Backup checks completed in 0.16 seconds
+2025-07-26 06:00:02,394 [BACKUP] INFO     Processing results and sending notifications
+2025-07-26 06:00:02,394 [BACKUP] INFO     Preparing notifications
+2025-07-26 06:00:02,394 [BACKUP] INFO     Notification summary:
+2025-07-26 06:00:02,394 [BACKUP] INFO       - Total backups: 4
+2025-07-26 06:00:02,394 [BACKUP] INFO       - Successful: 4
+2025-07-26 06:00:02,394 [BACKUP] INFO       - Failed: 0
+2025-07-26 06:00:02,395 [BACKUP] INFO       - Critical failures: 0
+2025-07-26 06:00:05,708 [BACKUP] INFO     Email sent successfully to 1 recipients: ✅ Backup Check Success - All 4 Passed
+2025-07-26 06:00:05,708 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-26 06:00:06,829 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-26 06:00:06,829 [BACKUP] INFO     ✓ Pushover summary sent successfully
+2025-07-26 06:00:06,829 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:06,829 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-26 06:00:06,829 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:06,830 [BACKUP] INFO     Total backups checked: 4
+2025-07-26 06:00:06,830 [BACKUP] INFO     Successful: 4
+2025-07-26 06:00:06,830 [BACKUP] INFO     Failed: 0
+2025-07-26 06:00:06,830 [BACKUP] INFO     Duration: 0.16 seconds
+2025-07-26 06:00:06,830 [BACKUP] INFO     Notifications sent: ✓
+2025-07-26 06:00:06,830 [BACKUP] INFO     All backups passed validation ✓
+2025-07-26 06:00:06,830 [BACKUP] INFO     ================================================================================
+2025-07-26 06:00:06,830 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-26 06:00:06,830 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:01,710 [BACKUP] INFO     Logging initialized for proxmox_backup_checker
+2025-07-27 06:00:01,711 [BACKUP] INFO     Log file: /home/rsi/proxmox_backup_checker/log/proxmox_backup_checker.log
+2025-07-27 06:00:01,711 [BACKUP] INFO     Log level: INFO
+2025-07-27 06:00:01,711 [BACKUP] INFO     Rotation: weekly_4
+2025-07-27 06:00:01,711 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:01,711 [BACKUP] INFO     Proxmox Backup Checker Starting
+2025-07-27 06:00:01,711 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:01,711 [BACKUP] INFO     Loading configuration from var/config.yaml
+2025-07-27 06:00:01,719 [BACKUP] INFO     Configuration loaded successfully:
+2025-07-27 06:00:01,719 [BACKUP] INFO       - 4 backup(s) to check
+2025-07-27 06:00:01,719 [BACKUP] INFO       - Email recipients: 1
+2025-07-27 06:00:01,719 [BACKUP] INFO       - Pushover priority: -1
+2025-07-27 06:00:01,720 [BACKUP] INFO       - Min free space: 100 GB
+2025-07-27 06:00:01,720 [BACKUP] INFO       - Log level: INFO
+2025-07-27 06:00:01,720 [BACKUP] INFO     Initializing backup checker and notification manager
+2025-07-27 06:00:01,722 [BACKUP] INFO     Pushover client initialized successfully
+2025-07-27 06:00:01,722 [BACKUP] INFO     Starting backup validation process
+2025-07-27 06:00:01,722 [BACKUP] INFO     Starting validation of 4 backup(s)
+2025-07-27 06:00:01,722 [BACKUP] INFO     [1/4] Validating backup: proxmox
+2025-07-27 06:00:01,722 [BACKUP] INFO       Directory: /mnt/backup_usb1/vm-containers/dump
+2025-07-27 06:00:01,722 [BACKUP] INFO       Max age: 8 days
+2025-07-27 06:00:01,722 [BACKUP] INFO       Min size: 10 GB
+2025-07-27 06:00:01,726 [BACKUP] INFO       ✓ Directory accessible
+2025-07-27 06:00:01,735 [BACKUP] INFO       ✓ Sufficient free space: 816.7 GB
+2025-07-27 06:00:01,743 [BACKUP] INFO     Backup validation passed: 43 files, total size 41.7 GB
+2025-07-27 06:00:01,743 [BACKUP] INFO       ✓ Backup validation passed: 43 files, 41.7 GB
+2025-07-27 06:00:01,743 [BACKUP] INFO       ✓ PASSED
+2025-07-27 06:00:01,743 [BACKUP] INFO     [2/4] Validating backup: homeassistant
+2025-07-27 06:00:01,743 [BACKUP] INFO       Directory: /mnt/backup_usb1/homeassistant
+2025-07-27 06:00:01,743 [BACKUP] INFO       Max age: 1 days
+2025-07-27 06:00:01,743 [BACKUP] INFO       Min size: 100 MB
+2025-07-27 06:00:01,746 [BACKUP] INFO       ✓ Directory accessible
+2025-07-27 06:00:01,753 [BACKUP] INFO       ✓ Sufficient free space: 816.7 GB
+2025-07-27 06:00:01,757 [BACKUP] WARNING  Backup size 92.1 MB is below minimum requirement 100 MB
+2025-07-27 06:00:01,758 [BACKUP] ERROR      ✗ Backup freshness check failed: Backup size 92.1 MB is below minimum requirement 100 MB
+2025-07-27 06:00:01,758 [BACKUP] INFO       ✗ FAILED
+2025-07-27 06:00:01,758 [BACKUP] INFO     [3/4] Validating backup: proxmox-config
+2025-07-27 06:00:01,758 [BACKUP] INFO       Directory: /mnt/backup_usb1/proxmox-config/daily
+2025-07-27 06:00:01,758 [BACKUP] INFO       Max age: 1 days
+2025-07-27 06:00:01,758 [BACKUP] INFO       Min size: 10 KB
+2025-07-27 06:00:01,761 [BACKUP] INFO       ✓ Directory accessible
+2025-07-27 06:00:01,768 [BACKUP] INFO       ✓ Sufficient free space: 816.7 GB
+2025-07-27 06:00:01,773 [BACKUP] INFO     Backup validation passed: 1 files, total size 29.6 KB
+2025-07-27 06:00:01,773 [BACKUP] INFO       ✓ Backup validation passed: 1 files, 29.6 KB
+2025-07-27 06:00:01,773 [BACKUP] INFO       ✓ PASSED
+2025-07-27 06:00:01,773 [BACKUP] INFO     [4/4] Validating backup: raspberrypi_image
+2025-07-27 06:00:01,773 [BACKUP] INFO       Directory: /mnt/backup_usb1/raspberrypi1/images
+2025-07-27 06:00:01,773 [BACKUP] INFO       Max age: 32 days
+2025-07-27 06:00:01,773 [BACKUP] INFO       Min size: 1 GB
+2025-07-27 06:00:01,776 [BACKUP] INFO       ✓ Directory accessible
+2025-07-27 06:00:01,782 [BACKUP] INFO       ✓ Sufficient free space: 816.7 GB
+2025-07-27 06:00:01,787 [BACKUP] INFO     Backup validation passed: 3 files, total size 4.9 GB
+2025-07-27 06:00:01,787 [BACKUP] INFO       ✓ Backup validation passed: 3 files, 4.9 GB
+2025-07-27 06:00:01,787 [BACKUP] INFO       ✓ PASSED
+2025-07-27 06:00:01,787 [BACKUP] INFO     Backup validation completed: 3 passed, 1 failed
+2025-07-27 06:00:01,787 [BACKUP] INFO     Backup checks completed in 0.08 seconds
+2025-07-27 06:00:01,787 [BACKUP] INFO     Processing results and sending notifications
+2025-07-27 06:00:01,787 [BACKUP] INFO     Preparing notifications
+2025-07-27 06:00:01,787 [BACKUP] INFO     Notification summary:
+2025-07-27 06:00:01,787 [BACKUP] INFO       - Total backups: 4
+2025-07-27 06:00:01,787 [BACKUP] INFO       - Successful: 3
+2025-07-27 06:00:01,787 [BACKUP] INFO       - Failed: 1
+2025-07-27 06:00:01,787 [BACKUP] INFO       - Critical failures: 1
+2025-07-27 06:00:05,205 [BACKUP] INFO     Email sent successfully to 1 recipients: ⚠️ Backup Check Alert - 1/4 Failed
+2025-07-27 06:00:05,206 [BACKUP] INFO     ✓ Email summary sent successfully
+2025-07-27 06:00:06,395 [BACKUP] INFO     Pushover notification sent successfully: 200
+2025-07-27 06:00:06,396 [BACKUP] INFO     ✓ Pushover critical alerts sent successfully
+2025-07-27 06:00:06,396 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:06,396 [BACKUP] INFO     BACKUP CHECK SUMMARY
+2025-07-27 06:00:06,396 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:06,396 [BACKUP] INFO     Total backups checked: 4
+2025-07-27 06:00:06,396 [BACKUP] INFO     Successful: 3
+2025-07-27 06:00:06,396 [BACKUP] INFO     Failed: 1
+2025-07-27 06:00:06,396 [BACKUP] INFO     Duration: 0.08 seconds
+2025-07-27 06:00:06,396 [BACKUP] INFO     Notifications sent: ✓
+2025-07-27 06:00:06,396 [BACKUP] WARNING  1 backup(s) failed validation
+2025-07-27 06:00:06,396 [BACKUP] WARNING    - homeassistant: Backup validation failed: Backup size 92.1 MB is below minimum requirement 100 MB
+2025-07-27 06:00:06,396 [BACKUP] INFO     ================================================================================
+2025-07-27 06:00:06,396 [BACKUP] INFO     Proxmox Backup Checker Completed
+2025-07-27 06:00:06,396 [BACKUP] INFO     ================================================================================

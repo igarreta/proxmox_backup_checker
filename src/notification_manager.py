@@ -99,12 +99,12 @@ class NotificationManager:
                 notification_success = False
         else:
             # Send low-priority summary if all backups passed
-            if len(failed_backups) == 0:
-                pushover_success = self._send_pushover_summary(check_results, duration)
-                if pushover_success:
-                    self.logger.info("✓ Pushover summary sent successfully")
-                else:
-                    self.logger.warning("Failed to send Pushover summary (non-critical)")
+            # if len(failed_backups) == 0:
+            #     pushover_success = self._send_pushover_summary(check_results, duration)
+            #     if pushover_success:
+            #         self.logger.info("✓ Pushover summary sent successfully")
+            #     else:
+            #         self.logger.warning("Failed to send Pushover summary (non-critical)")
         
         return notification_success
     
