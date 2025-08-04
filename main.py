@@ -13,6 +13,7 @@ import time
 import traceback
 from pathlib import Path
 from typing import Dict, List, Any
+import requests
 
 # Add python_utils to path for imports
 sys.path.append(str(Path(__file__).parent / "python_utils"))
@@ -123,6 +124,15 @@ def main() -> int:
         logger.info("Proxmox Backup Checker Completed")
         logger.info("=" * 80)
         
+        try:
+            # send heartbeat to uptime-kuma
+            response = requests.get(
+                'http://localhost:3001/api/push/PXZrGaxl2f?status=up&msg=OK&ping=', 
+                timeout=5
+            )
+            logger.debug(f'Kuma notification sent. Status code: {response.status_code}')
+        except Exception as e:
+            logger.error(f'Error sending Kuma notification: {e}')
         # Return appropriate exit code
         return 1 if failed_backups > 0 else 0
         

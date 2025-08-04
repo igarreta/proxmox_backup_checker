@@ -105,6 +105,7 @@ class NotificationManager:
             #         self.logger.info("✓ Pushover summary sent successfully")
             #     else:
             #         self.logger.warning("Failed to send Pushover summary (non-critical)")
+            pass
         
         return notification_success
     
