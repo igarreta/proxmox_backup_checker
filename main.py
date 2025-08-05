@@ -13,7 +13,6 @@ import time
 import traceback
 from pathlib import Path
 from typing import Dict, List, Any
-import requests
 
 # Add python_utils to path for imports
 sys.path.append(str(Path(__file__).parent / "python_utils"))
@@ -24,7 +23,8 @@ from python_utils import (
     AppConfig,
     EmailNotifier,
     PushoverNotifier,
-    send_critical_backup_alert
+    send_critical_backup_alert,
+    send_uptime_kuma_heartbeat
 )
 
 from src.backup_checker import BackupChecker
@@ -124,15 +124,26 @@ def main() -> int:
         logger.info("Proxmox Backup Checker Completed")
         logger.info("=" * 80)
         
-        try:
-            # send heartbeat to uptime-kuma
-            response = requests.get(
-                'http://localhost:3001/api/push/PXZrGaxl2f?status=up&msg=OK&ping=', 
-                timeout=5
+        # Send uptime monitoring heartbeat if configured
+        if config.uptime_kuma_url:
+            heartbeat_duration = time.time() - start_time
+            ping_ms = int(heartbeat_duration * 1000)
+            
+            success = send_uptime_kuma_heartbeat(
+                url=config.uptime_kuma_url,
+                status='up',
+                msg='Backup check completed',
+                ping=ping_ms,
+                logger=logger
             )
-            logger.debug(f'Kuma notification sent. Status code: {response.status_code}')
-        except Exception as e:
-            logger.error(f'Error sending Kuma notification: {e}')
+            
+            if success:
+                logger.debug(f'Uptime Kuma heartbeat sent successfully (ping: {ping_ms}ms)')
+            else:
+                logger.warning('Failed to send Uptime Kuma heartbeat')
+        else:
+            logger.warning('Uptime Kuma URL not configured - skipping heartbeat')
+        
         # Return appropriate exit code
         return 1 if failed_backups > 0 else 0
         
